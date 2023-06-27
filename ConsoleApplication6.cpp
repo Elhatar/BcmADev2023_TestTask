@@ -3,6 +3,17 @@
 
 using namespace std;
 
+string UnicSymbol(string text);
+
+int main()
+{
+    string inputText;
+    getline(cin, inputText);
+    cout << UnicSymbol(inputText) << endl;
+    system("pause");
+    return 0;
+}
+
 string UnicSymbol(string text)
 {
     string result;
@@ -35,7 +46,7 @@ string UnicSymbol(string text)
                 {
                     recievedSet += word[i];
                     break;
-                }  
+                }
             }
             word = "";
         }
@@ -68,14 +79,5 @@ string UnicSymbol(string text)
     {
         return "We can't count your unic symbol";
     }
-    
-}
 
-int main()
-{
-    string inputText;
-    getline(cin, inputText);
-    cout << UnicSymbol(inputText) << endl;
-    system("pause");
-    return 0;
 }
