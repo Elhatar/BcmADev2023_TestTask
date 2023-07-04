@@ -4,6 +4,7 @@
 using namespace std;
 
 string UnicSymbol(string text);
+void GetUnicChar(string input, string& output);
 
 int main()
 {
@@ -28,35 +29,29 @@ string UnicSymbol(string text)
         }
         else
         {
-            for (int i = 0; i < word.length(); i++)
-            {
-                int count = 0;
-                for (int j = 0; j < word.length(); j++)
-                {
-                    if (word[i] == word[j])
-                    {
-                        count++;
-                    }
-                    if (count > 1)
-                    {
-                        break;
-                    }
-                }
-                if (count == 1)
-                {
-                    recievedSet += word[i];
-                    break;
-                }
-            }
+            GetUnicChar(word, recievedSet);
             word = "";
         }
     }
-    for (int i = 0; i < recievedSet.length(); i++)
+    GetUnicChar(recievedSet, result);
+    if (result != "")
+    {
+        return "Your symbol is '" + result + "'";
+    }
+    else
+    {
+        return "We can't count your unic symbol";
+    }
+
+}
+void GetUnicChar(string input, string& output)
+{
+    for (int i = 0; i < input.length(); i++)
     {
         int count = 0;
-        for (int j = 0; j < recievedSet.length(); j++)
+        for (int j = 0; j < input.length(); j++)
         {
-            if (recievedSet[i] == recievedSet[j])
+            if (input[i] == input[j])
             {
                 count++;
             }
@@ -67,17 +62,8 @@ string UnicSymbol(string text)
         }
         if (count == 1)
         {
-            result += recievedSet[i];
+            output += input[i];
             break;
         }
     }
-    if (result != "")
-    {
-        return "Your symbol is '" + result + "'";
-    }
-    else
-    {
-        return "We can't count your unic symbol";
-    }
-
 }
